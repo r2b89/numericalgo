@@ -3,10 +3,10 @@ package poly_test
 import (
 	"testing"
 
-	"github.com/DzananGanic/numericalgo/fit"
+	"github.com/r2b89/numericalgo/fit"
 
-	"github.com/DzananGanic/numericalgo"
-	"github.com/DzananGanic/numericalgo/fit/poly"
+	"github.com/r2b89/numericalgo"
+	"github.com/r2b89/numericalgo/fit/poly"
 	"github.com/stretchr/testify/assert"
 )
 

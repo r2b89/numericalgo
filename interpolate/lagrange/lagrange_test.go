@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/DzananGanic/numericalgo/interpolate"
-	"github.com/DzananGanic/numericalgo/interpolate/lagrange"
+	"github.com/r2b89/numericalgo/interpolate"
+	"github.com/r2b89/numericalgo/interpolate/lagrange"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/DzananGanic/numericalgo/root"
+	"github.com/r2b89/numericalgo/root"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -5,8 +5,8 @@ import (
 
 	"fmt"
 
-	"github.com/DzananGanic/numericalgo/interpolate"
-	"github.com/DzananGanic/numericalgo/interpolate/linear"
+	"github.com/r2b89/numericalgo/interpolate"
+	"github.com/r2b89/numericalgo/interpolate/linear"
 	"github.com/stretchr/testify/assert"
 )
 

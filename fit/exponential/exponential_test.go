@@ -3,9 +3,9 @@ package exponential_test
 import (
 	"testing"
 
-	"github.com/DzananGanic/numericalgo"
-	"github.com/DzananGanic/numericalgo/fit"
-	"github.com/DzananGanic/numericalgo/fit/exponential"
+	"github.com/r2b89/numericalgo"
+	"github.com/r2b89/numericalgo/fit"
+	"github.com/r2b89/numericalgo/fit/exponential"
 	"github.com/stretchr/testify/assert"
 )
 

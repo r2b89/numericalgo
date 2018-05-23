@@ -3,7 +3,7 @@ package integrate
 import (
 	"fmt"
 
-	"github.com/DzananGanic/numericalgo"
+	"github.com/r2b89/numericalgo"
 )
 
 // Simpson is a function which accepts function, left, right bounds and n number of subdivisions. It returns the integration

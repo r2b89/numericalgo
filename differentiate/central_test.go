@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/DzananGanic/numericalgo/differentiate"
+	"github.com/r2b89/numericalgo/differentiate"
 	"github.com/stretchr/testify/assert"
 )
 

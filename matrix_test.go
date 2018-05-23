@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/DzananGanic/numericalgo"
+	"github.com/r2b89/numericalgo"
 	"github.com/stretchr/testify/assert"
 )
 

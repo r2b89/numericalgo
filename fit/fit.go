@@ -1,7 +1,7 @@
 package fit
 
 import (
-	"github.com/DzananGanic/numericalgo"
+	"github.com/r2b89/numericalgo"
 )
 
 type predictor interface {
