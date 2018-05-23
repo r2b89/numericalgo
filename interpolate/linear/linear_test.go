@@ -127,3 +127,59 @@ func TestLinearCanInterpolateMultipleValues(t *testing.T) {
 		})
 	}
 }
+
+func TestLinearCanInterpolateSingleValuesInArrayWithNegativeValues(t *testing.T) {
+	cases := map[string]struct {
+		x                   []float64
+		y                   []float64
+		valueToInterpolate 	float64
+		expectedEstimate   	float64
+		expectedError       error
+	}{
+		"basic linear signed-value interpolation": {
+			x:                   []float64{-20.0, -10.0, 10.0, 20},
+			y:                   []float64{-225.0, -180, 0, 45},
+			valueToInterpolate: -3,
+			expectedEstimate:   -117,
+			expectedError:      nil,
+		},
+	}
+
+	for name, c := range cases {
+		t.Run(name, func(t *testing.T) {
+			li := linear.New()
+			li.Fit(c.x, c.y)
+			estimates, err := interpolate.WithSingle(li, c.valueToInterpolate)
+			assert.Equal(t, c.expectedEstimate, estimates)
+			assert.Equal(t, c.expectedError, err)
+		})
+	}
+}
+
+func TestLinearCanInterpolateMultipleValuesInArrayWithNegativeValues(t *testing.T) {
+	cases := map[string]struct {
+		x                   []float64
+		y                   []float64
+		valuesToInterpolate []float64
+		expectedEstimates   []float64
+		expectedError       error
+	}{
+		"basic linear multiple-value interpolation": {
+			x:                   []float64{-20.0, -10.0, 10.0, 20},
+			y:                   []float64{-225.0, -180, 0, 45},
+			valuesToInterpolate: []float64{-4.0, -9.0, 3.0, 15.0},
+			expectedEstimates:   []float64{-126.0, -171.0, -63.0, 22.5},
+			expectedError:       nil,
+		},
+	}
+
+	for name, c := range cases {
+		t.Run(name, func(t *testing.T) {
+			li := linear.New()
+			li.Fit(c.x, c.y)
+			estimates, err := interpolate.WithMulti(li, c.valuesToInterpolate)
+			assert.Equal(t, c.expectedEstimates, estimates)
+			assert.Equal(t, c.expectedError, err)
+		})
+	}
+}

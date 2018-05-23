@@ -19,7 +19,7 @@ func SortCoordinatePairs(cp []CoordinatePair) {
 
 // SlicesToCoordinatePairs is a function which receives two slices of floats (x and y), turns them into a slice of CoordinatePairs, and returns the result.
 func SlicesToCoordinatePairs(x, y []float64) []CoordinatePair {
-	cp := make([]CoordinatePair, len(x))
+	cp := make([]CoordinatePair, 0)
 	for i := 0; i < len(x); i++ {
 		cp = append(cp, CoordinatePair{X: x[i], Y: y[i]})
 	}
