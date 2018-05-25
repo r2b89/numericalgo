@@ -3,11 +3,10 @@ package linear_test
 import (
 	"testing"
 
-	"fmt"
-
 	"github.com/r2b89/numericalgo/interpolate"
 	"github.com/r2b89/numericalgo/interpolate/linear"
 	"github.com/stretchr/testify/assert"
+	"fmt"
 )
 
 func TestLinearCanFit(t *testing.T) {
@@ -169,6 +168,35 @@ func TestLinearCanInterpolateMultipleValuesInArrayWithNegativeValues(t *testing.
 			y:                   []float64{-225.0, -180, 0, 45},
 			valuesToInterpolate: []float64{-4.0, -9.0, 3.0, 15.0},
 			expectedEstimates:   []float64{-126.0, -171.0, -63.0, 22.5},
+			expectedError:       nil,
+		},
+	}
+
+	for name, c := range cases {
+		t.Run(name, func(t *testing.T) {
+			li := linear.New()
+			li.Fit(c.x, c.y)
+			estimates, err := interpolate.WithMulti(li, c.valuesToInterpolate)
+			assert.Equal(t, c.expectedEstimates, estimates)
+			assert.Equal(t, c.expectedError, err)
+		})
+	}
+}
+
+
+func TestLinearCanInterpolateMultipleValuesInEndsOfRange(t *testing.T) {
+	cases := map[string]struct {
+		x                   []float64
+		y                   []float64
+		valuesToInterpolate []float64
+		expectedEstimates   []float64
+		expectedError       error
+	}{
+		"basic linear multiple-value interpolation": {
+			x:                   []float64{0.0, 50.0, 450.0, 500.0, 600.0},
+			y:                   []float64{0.0, 8.0, 348.0, 360.0, 370.0},
+			valuesToInterpolate: []float64{0.0, 0.01, 0.0001, 599.99999999999999},
+			expectedEstimates:   []float64{0.0, 0.0016, 0.000016000000000000003, 370.0},
 			expectedError:       nil,
 		},
 	}

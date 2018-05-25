@@ -46,11 +46,21 @@ func (li *Linear) Validate(val float64) error {
 }
 
 func (li *Linear) findNearestNeighbors(val float64, l, r int) (int, int) {
-	middle := (l + r) / 2
+	middle := l + (r - l) / 2
+
+	if middle == len(li.XYPairs) - 1 {
+		return middle - 1, middle
+	}
+
+	if middle == 0 {
+		return 0, 1
+	}
+
 	if (val >= li.XYPairs[middle-1].X) && (val <= li.XYPairs[middle].X) {
 		return middle - 1, middle
 	} else if val < li.XYPairs[middle-1].X {
 		return li.findNearestNeighbors(val, l, middle-2)
 	}
+
 	return li.findNearestNeighbors(val, middle+1, r)
 }
